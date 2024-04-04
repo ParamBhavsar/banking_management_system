@@ -12,7 +12,7 @@ public class Accounts {
     }
     public long open_bank_account(String email){
         if(!account_exist(email)) {
-            String open_account_query = "INSERT INTO ACCOUNTS VALUES(?,?,?,?,?)";
+            String open_account_query = "INSERT INTO ACCOUNTS VALUES(?,?,?,?,?);";
             sc.nextLine();
             System.out.print("enter full name: ");
             String fullname = sc.nextLine();
@@ -44,7 +44,7 @@ public class Accounts {
     private long generate_account_number(){
         try{
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT a_number FROM ACCOUNTS ORDER BY a_number DESC LIMIT 1");
+            ResultSet rs = st.executeQuery("SELECT a_number FROM ACCOUNTS ORDER BY a_number DESC LIMIT 1;");
             if(rs.next()){
                 long last_acc_number = rs.getLong("a_number");
                 return last_acc_number + 1;
@@ -60,7 +60,7 @@ public class Accounts {
     }
 
     public long get_Account_number(String email){
-        String get_account_no = "SELECT a_number from ACCOUNTS WHERE email=?";
+        String get_account_no = "SELECT a_number from ACCOUNTS WHERE email=?;";
         try {
             PreparedStatement ps = connection.prepareStatement(get_account_no);
             ps.setString(1, email);
@@ -76,7 +76,7 @@ public class Accounts {
     }
 
     public boolean account_exist(String email){
-        String exist_query ="SELECT a_number FROM ACCOUNTS WHERE email = ?";
+        String exist_query ="SELECT a_number FROM ACCOUNTS WHERE email = ?;";
         try {
             PreparedStatement ps = connection.prepareStatement(exist_query);
             ps.setString(1,email);
