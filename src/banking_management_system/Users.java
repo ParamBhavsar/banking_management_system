@@ -25,6 +25,7 @@ public class Users {
         String password = sc.nextLine();
         if(user_exist(email)){
             System.out.print("user already exists");
+            System.out.println();
             return;
         }
         String reg_query="INSERT INTO USERS VALUES(?,?,?);";

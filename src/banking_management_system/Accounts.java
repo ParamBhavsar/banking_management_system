@@ -12,7 +12,7 @@ public class Accounts {
     }
     public long open_bank_account(String email){
         if(!account_exist(email)) {
-            String open_account_query = "INSERT INTO ACCOUNTS VALUES(?,?,?,?,?);";
+            String open_account_query = "INSERT INTO accounts VALUES(?,?,?,?,?);";
             sc.nextLine();
             System.out.print("enter full name: ");
             String fullname = sc.nextLine();
